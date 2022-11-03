@@ -1,5 +1,7 @@
 var form=document.getElementById('addForm');//this is for form
-var itemList=document.getElementById('items');//for listitem
+var itemList=document.getElementById('items');//for list item
+
+var filter=document.getElementById('filter');//for filter
 
 //when we click submit it should add in listItem
 
@@ -7,6 +9,9 @@ form.addEventListener('submit',addItem);
 
 //when we click X it should delete item
 itemList.addEventListener('click',removeItem);
+
+filter.addEventListener('keyup',filterItems);
+
 
 
 
@@ -21,7 +26,7 @@ function addItem(e){
  2) create new li element with same class of existing li
  3)add textNode in li of value
 
- 4)add delete button
+ 4)add delete button 
  */
 
 //get input value
@@ -69,5 +74,33 @@ function removeItem(e){
             itemList.removeChild(li);
         }
     }
+
+}
+
+function filterItems(e){
+
+    //we will convert every input to lowerCase for type safety
+
+    /*
+    
+The target event property returns the element that triggered the event.
+
+The target property gets the element on which the event originally occurred, 
+opposed to the currentTarget property, which always refers to the element whose event listener triggered the event.
+    */
+    var text=e.target.value.toLowerCase();
+    
+    //now get all Li from itemList(ul)
+    var items=itemList.getElementsByTagName('li');
+    //this items will be in form of html collection which we have to convet in array
+    Array.from(items).forEach(function(item){
+        var itemName=item.firstChild.textContent;
+        if(itemName.toLowerCase().indexOf(text) !=-1){
+            item.style.display='block';
+        }else{
+            item.style.display='none';
+        }
+    });
+
 
 }
