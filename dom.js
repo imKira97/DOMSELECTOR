@@ -12,19 +12,20 @@
 
 //Selector 
 //1st  getElementById
-
+/*
 let headerTitle=document.getElementById('header-title');
 
 
 //headerTitle.textContent='Hello World';
 console.log(headerTitle.textContent);
-//headerTitle.innerText='Good BYE'
+headerTitle.innerText='Good BYE'
 console.log(headerTitle.innerText);
 
-/*
+
 textContent VS innerText
-*/
+
 
 
 let header=document.getElementById('main-header');
 header.style.borderBottom='solid 10px black'
+*/
